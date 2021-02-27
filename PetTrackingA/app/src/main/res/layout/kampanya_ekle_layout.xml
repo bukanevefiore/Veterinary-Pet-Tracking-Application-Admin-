@@ -1,6 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:layout_margin="40dp"
+    android:background="#AAD578"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <androidx.cardview.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        card_view:cardElevation="5dp"
+        android:textAlignment="center"
+        android:clickable="true"
+        card_view:cardBackgroundColor="#AAD578"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardCornerRadius="20dp">
+
+    <androidx.cardview.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        card_view:cardElevation="5dp"
+        android:textAlignment="center"
+        android:clickable="true"
+        android:layout_margin="7dp"
+        card_view:cardBackgroundColor="#B0DA80"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardCornerRadius="20dp">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ADD NEW OFFER"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            android:textAlignment="center"
+            android:textColor="#526E31">
+
+        </TextView>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="wrap_content"
+        app:boxCornerRadiusBottomStart="20dp"
+        android:layout_gravity="center"
+        android:hint="Enter the title of the campaign .."
+        android:layout_height="wrap_content">
+    <com.google.android.material.textfield.TextInputEditText
+        android:layout_width="300dp"
+        android:id="@+id/kampanyabaslik"
+        android:background="@drawable/background_transparent"
+        android:layout_height="60dp">
+
+    </com.google.android.material.textfield.TextInputEditText>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="wrap_content"
+            app:boxCornerRadiusBottomStart="20dp"
+            android:layout_gravity="center"
+            android:hint="Enter the content of the campaign ..
+"
+            android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="300dp"
+                android:id="@+id/kampanyaicerik"
+                android:background="@drawable/background_transparent"
+                android:layout_height="60dp">
+
+            </com.google.android.material.textfield.TextInputEditText>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageView
+            android:layout_width="180dp"
+            android:layout_height="150dp"
+           android:layout_gravity="center"
+            android:visibility="gone"
+            android:layout_marginTop="15dp"
+            android:id="@+id/kampanyaImage">
+
+        </ImageView>
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="100dp"
+            android:text="ADD PICTURE"
+            card_view:cornerRadius="20dp"
+            android:textSize="10dp"
+            android:backgroundTint="#416715"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:id="@+id/kampanyaImageButon"
+            android:layout_height="50dp">
+
+        </com.google.android.material.button.MaterialButton>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="100dp"
+        android:text="SAVE"
+        android:textSize="12dp"
+        card_view:cornerRadius="20dp"
+        android:backgroundTint="#416715"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:id="@+id/kampanyaKaydetButon"
+        android:layout_height="50dp">
+
+    </com.google.android.material.button.MaterialButton>
+
+
+</LinearLayout>
+
+
+    </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    </androidx.cardview.widget.CardView>
 
 </LinearLayout>
