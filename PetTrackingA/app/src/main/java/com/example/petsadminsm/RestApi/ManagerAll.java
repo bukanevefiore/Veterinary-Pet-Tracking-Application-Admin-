@@ -4,6 +4,7 @@ package com.example.petsadminsm.RestApi;
 
 import com.example.petsadminsm.Models.KampanyaEkleModel;
 import com.example.petsadminsm.Models.KampanyaModel;
+import com.example.petsadminsm.Models.KampanyaSilModel;
 
 import java.util.List;
 
@@ -29,6 +30,12 @@ public class ManagerAll extends BaseManager {
     public Call<KampanyaEkleModel> addKampanya(String baslik, String text, String resim)
     {
         Call<KampanyaEkleModel> x=getRestApi().addKampanya(baslik,text,resim);
+        return x;
+    }
+
+    public Call<KampanyaSilModel> kampanyaSil(String id)
+    {
+        Call<KampanyaSilModel> x=getRestApi().kampanyaSil(id);
         return x;
     }
 

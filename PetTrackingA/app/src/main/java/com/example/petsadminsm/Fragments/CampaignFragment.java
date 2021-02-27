@@ -101,7 +101,7 @@ public class CampaignFragment extends Fragment {
 
                     Log.i("kampanyaliste", response.body().toString());
                     kampanyaList = response.body();
-                    campaignAdapter = new CampaignAdapter(kampanyaList, getContext());
+                    campaignAdapter = new CampaignAdapter(kampanyaList, getContext(),getActivity());
                     kampanya_recyclerview.setAdapter(campaignAdapter);
                     Toast.makeText(getContext(), "We have " + response.body().size() + " campaign", Toast.LENGTH_SHORT).show();
 
