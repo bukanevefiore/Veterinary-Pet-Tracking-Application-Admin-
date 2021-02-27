@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="20dp"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.HomeFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:orientation="horizontal"
+                android:id="@+id/lineera"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:weightSum="2">
+                <androidx.cardview.widget.CardView
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    card_view:cardElevation="5dp"
+                    android:textAlignment="center"
+                    android:clickable="true"
+                    card_view:cardBackgroundColor="#FAABC6"
+                    android:layout_width="0dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    card_view:cardCornerRadius="15dp">
+
+                    <androidx.cardview.widget.CardView
+                        card_view:cardElevation="5dp"
+                        android:textAlignment="center"
+                        android:clickable="true"
+
+                        android:layout_margin="5dp"
+                        card_view:cardBackgroundColor="#F3C4D5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        card_view:cardCornerRadius="15dp">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:id="@+id/anaSorular_linear"
+                            android:clickable="true"
+                            android:screenReaderFocusable="true"
+                            >
+
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="120dp"
+                                android:layout_gravity="center"
+                                android:background="@drawable/ic_baseline_contact_support_24"
+                                android:id="@+id/sanalKarneGecmiasAsiImagee"
+                                android:layout_height="120dp">
+                            </de.hdodenhof.circleimageview.CircleImageView>
+
+
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="QUESTIONS"
+                                android:textSize="15dp"
+                                android:textAlignment="center"
+                                android:background="#b4004e"
+                                android:layout_marginTop="5dp"
+                                android:textStyle="bold"
+                                android:textColor="#D2DCC7">
+
+                            </TextView>
+
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    card_view:cardElevation="5dp"
+                    android:textAlignment="center"
+                    android:clickable="true"
+                    android:layout_marginLeft="10dp"
+                    card_view:cardBackgroundColor="#D37FE1"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    card_view:cardCornerRadius="15dp">
+
+                    <androidx.cardview.widget.CardView
+                        card_view:cardElevation="5dp"
+                        android:textAlignment="center"
+                        android:clickable="true"
+
+                        android:layout_margin="5dp"
+                        card_view:cardBackgroundColor="#EDBFF4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        card_view:cardCornerRadius="15dp">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:id="@+id/anaKullanıcılar_linear"
+                            android:clickable="true"
+                            android:screenReaderFocusable="true"
+                            >
+
+
+
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="120dp"
+                                android:layout_gravity="center"
+                                android:background="@drawable/ic_baseline_groups_24"
+                                android:layout_height="120dp">
+                            </de.hdodenhof.circleimageview.CircleImageView>
+
+
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="USERS"
+                                android:textSize="15dp"
+                                android:textAlignment="center"
+                                android:background="#6a0080"
+                                android:layout_marginTop="5dp"
+                                android:textStyle="bold"
+                                android:textColor="#CAD3C0">
+
+                            </TextView>
+
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </androidx.cardview.widget.CardView>
+
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:weightSum="2">
+                <androidx.cardview.widget.CardView
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    card_view:cardElevation="5dp"
+                    android:textAlignment="center"
+                    android:clickable="true"
+                    card_view:cardBackgroundColor="#C9F19D"
+                    android:layout_width="0dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    card_view:cardCornerRadius="15dp">
+
+                    <androidx.cardview.widget.CardView
+                        card_view:cardElevation="5dp"
+                        android:textAlignment="center"
+                        android:clickable="true"
+
+                        android:layout_margin="5dp"
+                        card_view:cardBackgroundColor="#DCF1C5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        card_view:cardCornerRadius="15dp">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:id="@+id/anaKampanyalar_linear"
+                            android:clickable="true"
+                            android:screenReaderFocusable="true"
+                            >
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="120dp"
+                                android:layout_gravity="center"
+                                android:background="@drawable/ic_baseline_notification_add_24"
+                                android:layout_height="120dp">
+                            </de.hdodenhof.circleimageview.CircleImageView>
+
+
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="ADD CAMPAIGN"
+                                android:textSize="15dp"
+                                android:textAlignment="center"
+                                android:background="#4A7E0D"
+                                android:layout_marginTop="5dp"
+                                android:textStyle="bold"
+                                android:textColor="#D2DCC7">
+
+                            </TextView>
+
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    card_view:cardElevation="5dp"
+                    android:textAlignment="center"
+                    android:clickable="true"
+                    android:layout_marginLeft="10dp"
+                    card_view:cardBackgroundColor="#B69B91"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    card_view:cardCornerRadius="15dp">
+
+                    <androidx.cardview.widget.CardView
+                        card_view:cardElevation="5dp"
+                        android:textAlignment="center"
+                        android:clickable="true"
+
+                        android:layout_margin="5dp"
+                        card_view:cardBackgroundColor="#DDCEC8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        card_view:cardCornerRadius="15dp">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:id="@+id/anaPetTakip_linear"
+                            android:clickable="true"
+                            android:screenReaderFocusable="true"
+                            >
+
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="120dp"
+                                android:layout_gravity="center"
+                                android:background="@drawable/ic_baseline_pets_24"
+                                android:layout_height="120dp">
+                            </de.hdodenhof.circleimageview.CircleImageView>
+
+
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="PET TRACKING"
+                                android:textSize="15dp"
+                                android:textAlignment="center"
+                                android:background="#4b2c20"
+                                android:layout_marginTop="5dp"
+                                android:textStyle="bold"
+                                android:textColor="#CAD3C0">
+
+                            </TextView>
+
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.CampaignFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/kampanya_recyclerview">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginRight="10dp"
+        android:backgroundTint="#F7F8F6"
+        android:id="@+id/yeniKampanyaEkleButon"
+        android:src="@drawable/ic_baseline_notification_add_24"
+        android:layout_marginTop="-60dp"
+        android:layout_gravity="right"
+  >
+
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+</LinearLayout>

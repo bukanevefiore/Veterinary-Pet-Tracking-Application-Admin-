@@ -1,18 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="#454444"
+    android:layout_margin="0.5dp"
+    android:orientation="vertical"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.cardview.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        card_view:cardElevation="5dp"
+        android:textAlignment="center"
+        card_view:cardBackgroundColor="#E6E4E4"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="50dp"
+        android:layout_gravity="center"
+        android:layout_height="match_parent"
+        card_view:cardCornerRadius="15dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:id="@+id/mainFrameLayout"
+            android:layout_height="match_parent">
+
+        </FrameLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.appcompat.widget.Toolbar
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view_menu"
+        card_view:cardElevation="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:background="@drawable/alt_menu_layout"
+        android:layout_height="50dp"
+        card_view:cardCornerRadius="2dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+
+            android:layout_alignParentBottom="true">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1">
+                <com.google.android.material.button.MaterialButtonToggleGroup
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/aramaYapButon"
+                    android:layout_marginLeft="40dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_baseline_local_phone_24">
+
+                </com.google.android.material.button.MaterialButtonToggleGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+
+                android:layout_weight="1">
+                <com.google.android.material.button.MaterialButtonToggleGroup
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/home_menu_buton"
+                    android:layout_marginLeft="40dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_baseline_home_24">
+
+                </com.google.android.material.button.MaterialButtonToggleGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1">
+                <com.google.android.material.button.MaterialButtonToggleGroup
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:id="@+id/cikisYapButon"
+                    android:layout_marginLeft="40dp"
+                    android:background="@drawable/ic_baseline_power_settings_new_24">
+
+                </com.google.android.material.button.MaterialButtonToggleGroup>
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </androidx.appcompat.widget.Toolbar>
+
+</RelativeLayout>
