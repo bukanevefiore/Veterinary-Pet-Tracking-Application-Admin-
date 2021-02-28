@@ -11,7 +11,7 @@
         android:textAlignment="center"
         android:clickable="true"
         android:layout_margin="10dp"
-        card_view:cardBackgroundColor="#AAD578"
+        card_view:cardBackgroundColor="#80AE4B"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         card_view:cardCornerRadius="15dp">
@@ -22,7 +22,7 @@
         android:textAlignment="center"
         android:id="@+id/kampanyaLayoutSil"
         android:clickable="true"
-        android:layout_margin="7dp"
+        android:layout_marginBottom="12dp"
         card_view:cardBackgroundColor="#B0DA80"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -59,19 +59,19 @@
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 card_view:cardBackgroundColor="#BFEC8C"
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 card_view:cardCornerRadius="100dp">
 
 
-        <ImageView
-            android:layout_width="250dp"
-            android:layout_height="150dp"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:id="@+id/kampanya_image"
             android:layout_margin="10dp"
             android:layout_gravity="center">
 
-        </ImageView>
+        </de.hdodenhof.circleimageview.CircleImageView>
     </androidx.cardview.widget.CardView>
             <TextView
                 android:layout_width="match_parent"

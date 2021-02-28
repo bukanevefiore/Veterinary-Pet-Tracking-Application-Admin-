@@ -26,6 +26,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -56,7 +57,7 @@ public class CampaignAdapter extends RecyclerView.Adapter<CampaignAdapter.ViewHo
 
         holder.kampanya_baslik.setText(list.get(position).getBaslik().toString());
         holder.kampanya_text.setText(list.get(position).getText().toString());
-        Picasso.get().load("http://192.168.1.4/veterinary/" +list.get(position).getResim()).resize(250,150).into(holder.kampanya_image);
+        Picasso.get().load("http://192.168.1.4/veterinary/" +list.get(position).getResim()).resize(100,100).into(holder.kampanya_image);
 
         holder.kampanyaLayoutSil.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,7 +83,7 @@ public class CampaignAdapter extends RecyclerView.Adapter<CampaignAdapter.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder
     {
         TextView kampanya_baslik,kampanya_text;
-        ImageView kampanya_image;
+        CircleImageView kampanya_image;
         CardView kampanyaLayoutSil;
 
         public ViewHolder(@NonNull View itemView) {

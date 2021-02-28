@@ -4,6 +4,7 @@ package com.example.petsadminsm.RestApi;
 import com.example.petsadminsm.Models.KampanyaEkleModel;
 import com.example.petsadminsm.Models.KampanyaModel;
 import com.example.petsadminsm.Models.KampanyaSilModel;
+import com.example.petsadminsm.Models.PetAsiTakipModel;
 
 import java.util.List;
 
@@ -26,5 +27,9 @@ public interface RestApi {
     @FormUrlEncoded
     @POST("/veterinary/adminkampanyasil.php")
     Call<KampanyaSilModel> kampanyaSil(@Field("id") String id);
+
+    @FormUrlEncoded
+    @POST("/veterinary/adminasitakip.php")
+    Call<List<PetAsiTakipModel>> getPetAsiTakip(@Field("asitarih") String asitarih);
 
 }

@@ -5,6 +5,7 @@ package com.example.petsadminsm.RestApi;
 import com.example.petsadminsm.Models.KampanyaEkleModel;
 import com.example.petsadminsm.Models.KampanyaModel;
 import com.example.petsadminsm.Models.KampanyaSilModel;
+import com.example.petsadminsm.Models.PetAsiTakipModel;
 
 import java.util.List;
 
@@ -36,6 +37,12 @@ public class ManagerAll extends BaseManager {
     public Call<KampanyaSilModel> kampanyaSil(String id)
     {
         Call<KampanyaSilModel> x=getRestApi().kampanyaSil(id);
+        return x;
+    }
+
+    public Call<List<PetAsiTakipModel>> getPetAsiTakip(String asitarih)
+    {
+        Call<List<PetAsiTakipModel>> x=getRestApi().getPetAsiTakip(asitarih);
         return x;
     }
 

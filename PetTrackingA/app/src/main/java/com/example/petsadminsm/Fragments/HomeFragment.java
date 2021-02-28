@@ -50,6 +50,14 @@ public class HomeFragment extends Fragment {
                 changeFragments.change(new CampaignFragment());
             }
         });
+
+        anaPetTakip_linear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                changeFragments.change(new AsiTakipFragment());
+            }
+        });
     }
 
 
