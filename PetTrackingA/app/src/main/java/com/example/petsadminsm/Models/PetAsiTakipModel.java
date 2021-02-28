@@ -11,6 +11,7 @@ public class PetAsiTakipModel {
     public String asiId;
     public String kadi;
     public String telefon;
+    public String asidurum;
     public boolean tf;
 
 
@@ -94,6 +95,14 @@ public class PetAsiTakipModel {
         this.tf = tf;
     }
 
+    public String getAsidurum() {
+        return asidurum;
+    }
+
+    public void setAsidurum(String asidurum) {
+        this.asidurum = asidurum;
+    }
+
     @Override
     public String toString() {
         return "PetAsiTakipModel{" +
@@ -106,6 +115,7 @@ public class PetAsiTakipModel {
                 ", asiId='" + asiId + '\'' +
                 ", kadi='" + kadi + '\'' +
                 ", telefon='" + telefon + '\'' +
+                ", asidurum='" + asidurum + '\'' +
                 ", tf=" + tf +
                 '}';
     }

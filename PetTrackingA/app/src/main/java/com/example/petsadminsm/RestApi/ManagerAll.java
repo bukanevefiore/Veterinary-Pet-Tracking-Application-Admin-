@@ -2,6 +2,7 @@ package com.example.petsadminsm.RestApi;
 
 
 
+import com.example.petsadminsm.Models.AsiOnaylaModel;
 import com.example.petsadminsm.Models.KampanyaEkleModel;
 import com.example.petsadminsm.Models.KampanyaModel;
 import com.example.petsadminsm.Models.KampanyaSilModel;
@@ -46,5 +47,15 @@ public class ManagerAll extends BaseManager {
         return x;
     }
 
+    public Call<AsiOnaylaModel> asiOnayla(String id)
+    {
+        Call<AsiOnaylaModel> x=getRestApi().asiOnayla(id);
+        return x;
+    }
 
+    public Call<AsiOnaylaModel> asiIptal(String id)
+    {
+        Call<AsiOnaylaModel> x=getRestApi().asiIptal(id);
+        return x;
+    }
 }

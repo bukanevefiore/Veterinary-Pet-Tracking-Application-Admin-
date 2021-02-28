@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.petsadminsm.Models.AsiOnaylaModel;
 import com.example.petsadminsm.Models.KampanyaModel;
 import com.example.petsadminsm.Models.KampanyaSilModel;
 import com.example.petsadminsm.Models.PetAsiTakipModel;
@@ -60,13 +62,37 @@ public class PetAsiTakipAdapter extends RecyclerView.Adapter<PetAsiTakipAdapter.
         holder.asiTakipBilgi.setText(list.get(position).getKadi().toString()+"'s pet with type " +list.get(position).getPettur().toString()+ " type " +list.get(position).getPetcins().toString()+
                 " has the " +list.get(position).getAsiisim().toString()+ " vaccine today.");
         Picasso.get().load("http://192.168.1.4/veterinary/" +list.get(position).getPetresim()).resize(100,100).into(holder.asiTakipImage);
+/*
+       if(list.get(position).getAsidurum().toString().equals("1")){
 
+           holder.asiTakipOkButon.setImageResource(R.drawable.ic_baseline_check_circle_24);
+       }
+*/
         // pet sahibini arama işlemi
         holder.asiTakipAraButon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 ara(list.get(position).getTelefon().toString());
+            }
+        });
+
+        // aşının yapıldığına dair onaylama işlemi
+        holder.asiTakipOkButon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                holder.asiTakipOkButon.setImageResource(R.drawable.ic_baseline_check_circle_24);
+                asiOnaylaRequest(list.get(position).getAsiId().toString(),position);
+            }
+        });
+
+        // aşı iptal etme
+        holder.asiTakipKapatButon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                asiIptalRequest(list.get(position).getAsiId().toString(),position);
             }
         });
     }
@@ -96,6 +122,8 @@ public class PetAsiTakipAdapter extends RecyclerView.Adapter<PetAsiTakipAdapter.
             asiTakipKapatButon=itemView.findViewById(R.id.asiTakipKapatButon);
 
 
+
+
         }
     }
 
@@ -117,5 +145,62 @@ public class PetAsiTakipAdapter extends RecyclerView.Adapter<PetAsiTakipAdapter.
         intent.setData(Uri.parse("tel:"+numara));
         activity.startActivity(intent);
 
+    }
+
+    public void asiOnaylaRequest(String id,int position){
+
+        Call<AsiOnaylaModel> request=ManagerAll.getInstance().asiOnayla(id);
+        request.enqueue(new Callback<AsiOnaylaModel>() {
+            @Override
+            public void onResponse(Call<AsiOnaylaModel> call, Response<AsiOnaylaModel> response) {
+
+                if (response.body().isTf()){
+
+                    Toast.makeText(context, response.body().getText().toString(), Toast.LENGTH_SHORT).show();
+                    deleteToKampanyaList(position);
+
+                }else{
+
+                    Toast.makeText(context, Warnings.internetProblemText, Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<AsiOnaylaModel> call, Throwable t) {
+
+                Toast.makeText(context, Warnings.internetProblemText, Toast.LENGTH_SHORT).show();
+                Log.e("asionaylakontrol",t.getMessage());
+
+            }
+        });
+
+
+    }
+
+    public void asiIptalRequest(String id,int position){
+
+        Call<AsiOnaylaModel> request=ManagerAll.getInstance().asiIptal(id);
+        request.enqueue(new Callback<AsiOnaylaModel>() {
+            @Override
+            public void onResponse(Call<AsiOnaylaModel> call, Response<AsiOnaylaModel> response) {
+
+                if(response.body().isTf()){
+
+                    Toast.makeText(context, response.body().getText().toString(), Toast.LENGTH_SHORT).show();
+                    deleteToKampanyaList(position);
+                }else{
+                    Toast.makeText(context, Warnings.internetProblemText, Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AsiOnaylaModel> call, Throwable t) {
+
+                Toast.makeText(context, Warnings.internetProblemText, Toast.LENGTH_SHORT).show();
+                Log.e("asiiptalkontrol",t.getMessage());
+
+            }
+        });
     }
 }
