@@ -7,6 +7,7 @@ import com.example.petsadminsm.Models.KampanyaEkleModel;
 import com.example.petsadminsm.Models.KampanyaModel;
 import com.example.petsadminsm.Models.KampanyaSilModel;
 import com.example.petsadminsm.Models.PetAsiTakipModel;
+import com.example.petsadminsm.Models.SorularModel;
 
 import java.util.List;
 
@@ -56,6 +57,12 @@ public class ManagerAll extends BaseManager {
     public Call<AsiOnaylaModel> asiIptal(String id)
     {
         Call<AsiOnaylaModel> x=getRestApi().asiIptal(id);
+        return x;
+    }
+
+    public Call<List<SorularModel>> getSorular()
+    {
+        Call<List<SorularModel>> x=getRestApi().getSorular();
         return x;
     }
 }

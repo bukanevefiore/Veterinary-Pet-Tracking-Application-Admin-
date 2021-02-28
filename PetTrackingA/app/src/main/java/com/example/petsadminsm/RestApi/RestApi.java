@@ -6,6 +6,7 @@ import com.example.petsadminsm.Models.KampanyaEkleModel;
 import com.example.petsadminsm.Models.KampanyaModel;
 import com.example.petsadminsm.Models.KampanyaSilModel;
 import com.example.petsadminsm.Models.PetAsiTakipModel;
+import com.example.petsadminsm.Models.SorularModel;
 
 import java.util.List;
 
@@ -41,5 +42,6 @@ public interface RestApi {
     @POST("/veterinary/adminasiiptal.php")
     Call<AsiOnaylaModel> asiIptal(@Field("id") String id);
 
-
+    @GET("/veterinary/adminsorular.php")
+    Call<List<SorularModel>> getSorular();
 }
