@@ -3,6 +3,7 @@ package com.example.petsadminsm.RestApi;
 
 
 import com.example.petsadminsm.Models.AsiOnaylaModel;
+import com.example.petsadminsm.Models.CevaplaModel;
 import com.example.petsadminsm.Models.KampanyaEkleModel;
 import com.example.petsadminsm.Models.KampanyaModel;
 import com.example.petsadminsm.Models.KampanyaSilModel;
@@ -63,6 +64,12 @@ public class ManagerAll extends BaseManager {
     public Call<List<SorularModel>> getSorular()
     {
         Call<List<SorularModel>> x=getRestApi().getSorular();
+        return x;
+    }
+
+    public Call<CevaplaModel> soruCevapla(String musid,String soruid,String text)
+    {
+        Call<CevaplaModel> x=getRestApi().soruCevapla(musid, soruid, text);
         return x;
     }
 }

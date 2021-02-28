@@ -1,6 +1,7 @@
 package com.example.petsadminsm.Adapters;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,11 +18,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.petsadminsm.Models.AsiOnaylaModel;
+import com.example.petsadminsm.Models.CevaplaModel;
 import com.example.petsadminsm.Models.PetAsiTakipModel;
 import com.example.petsadminsm.Models.SorularModel;
 import com.example.petsadminsm.R;
 import com.example.petsadminsm.RestApi.ManagerAll;
 import com.example.petsadminsm.Utils.Warnings;
+import com.google.android.material.textfield.TextInputEditText;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -72,6 +76,8 @@ public class SorularAdapter extends RecyclerView.Adapter<SorularAdapter.ViewHold
             public void onClick(View v) {
 
                 holder.soruCevaplaButon.setImageResource(R.drawable.ic_baseline_message_25);
+                openCevaplamaAlert(list.get(position).getMusid().toString(),list.get(position).getSoruid().toString(),
+                        position,list.get(position).getSoru().toString());
 
             }
         });
@@ -101,8 +107,6 @@ public class SorularAdapter extends RecyclerView.Adapter<SorularAdapter.ViewHold
 
 
 
-
-
         }
     }
 
@@ -126,5 +130,68 @@ public class SorularAdapter extends RecyclerView.Adapter<SorularAdapter.ViewHold
 
     }
 
+    // gelen soruları cevaplamak için alert dialog açma
+    public void openCevaplamaAlert(final String musid,final String soruid,final int position,String soru){
+
+        LayoutInflater layoutInflater=activity.getLayoutInflater();
+        View view=layoutInflater.inflate(R.layout.cevapla_alert_layout,null);
+
+        TextInputEditText cevapVerEditText;
+        TextView cevapLayout_sorutext;
+        Button cevapVerButon;
+
+        cevapVerEditText=view.findViewById(R.id.cevapVerEditText);
+        cevapVerButon=view.findViewById(R.id.cevapVerButon);
+        cevapLayout_sorutext=view.findViewById(R.id.cevapLayout_sorutext);
+        cevapLayout_sorutext.setText(soru);  // tıklanan soruyu alertte gözterme
+
+        AlertDialog.Builder alert=new AlertDialog.Builder(context);
+        alert.setView(view);
+        alert.setCancelable(true);
+        final AlertDialog alertDialog=alert.create();
+
+        // alert layout içindeki buton
+        cevapVerButon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String cevap=cevapVerEditText.getText().toString();
+                cevapVerEditText.setText("");
+                alertDialog.cancel();
+                soruCevaplaRequest(musid,soruid,cevap,alertDialog,position);
+
+            }
+        });
+
+        alertDialog.show();
+    }
+
+    public void soruCevaplaRequest(String musid,String soruid,String text,AlertDialog alertDialog,int position){
+
+        Call<CevaplaModel> request=ManagerAll.getInstance().soruCevapla(musid, soruid, text);
+        request.enqueue(new Callback<CevaplaModel>() {
+            @Override
+            public void onResponse(Call<CevaplaModel> call, Response<CevaplaModel> response) {
+
+                if(response.body().isTf()){
+
+                    Toast.makeText(context, response.body().getText().toString(), Toast.LENGTH_LONG).show();
+                    alertDialog.cancel();
+                    deleteToKampanyaList(position); // listede cevaplanmamış sorulardan çıkartma işlemi
+                }else{
+
+                    Toast.makeText(context, response.body().getText().toString(), Toast.LENGTH_LONG).show();
+                    alertDialog.cancel();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CevaplaModel> call, Throwable t) {
+
+                Toast.makeText(context, Warnings.internetProblemText, Toast.LENGTH_SHORT).show();
+                Log.e("cevapkontrol",t.getMessage());
+            }
+        });
+    }
 
 }

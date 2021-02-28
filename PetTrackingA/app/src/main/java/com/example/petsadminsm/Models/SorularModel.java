@@ -2,7 +2,7 @@ package com.example.petsadminsm.Models;
 
 public class SorularModel {
 
-
+    public String musid;
     public String soru;
     public String kadi;
     public String telefon;
@@ -49,10 +49,19 @@ public class SorularModel {
         this.tf = tf;
     }
 
+    public String getMusid() {
+        return musid;
+    }
+
+    public void setMusid(String musid) {
+        this.musid = musid;
+    }
+
     @Override
     public String toString() {
         return "SorularModel{" +
-                "soru='" + soru + '\'' +
+                "musid='" + musid + '\'' +
+                ", soru='" + soru + '\'' +
                 ", kadi='" + kadi + '\'' +
                 ", telefon='" + telefon + '\'' +
                 ", soruid='" + soruid + '\'' +

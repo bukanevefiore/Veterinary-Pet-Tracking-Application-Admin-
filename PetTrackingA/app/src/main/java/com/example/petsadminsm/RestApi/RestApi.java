@@ -2,6 +2,7 @@ package com.example.petsadminsm.RestApi;
 
 
 import com.example.petsadminsm.Models.AsiOnaylaModel;
+import com.example.petsadminsm.Models.CevaplaModel;
 import com.example.petsadminsm.Models.KampanyaEkleModel;
 import com.example.petsadminsm.Models.KampanyaModel;
 import com.example.petsadminsm.Models.KampanyaSilModel;
@@ -44,4 +45,8 @@ public interface RestApi {
 
     @GET("/veterinary/adminsorular.php")
     Call<List<SorularModel>> getSorular();
+
+    @FormUrlEncoded
+    @POST("/veterinary/adminsorucevapla.php")
+    Call<CevaplaModel> soruCevapla(@Field("musid") String musid,@Field("soruid") String soruid,@Field("text") String text);
 }
