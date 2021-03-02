@@ -67,8 +67,15 @@ public class HomeFragment extends Fragment {
                 changeFragments.change(new SorularFragment());
             }
         });
-    }
 
+        anaKullanıcılar_linear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                changeFragments.change(new KullanicilarFragment());
+            }
+        });
+    }
 
 
 

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        card_view:cardElevation="5dp"
+        android:textAlignment="center"
+        android:clickable="true"
+        android:layout_margin="10dp"
+        card_view:cardBackgroundColor="#6a0080"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardCornerRadius="15dp">
+
+    <androidx.cardview.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        card_view:cardElevation="5dp"
+        android:textAlignment="center"
+        android:id="@+id/kampanyaLayoutSil"
+        android:clickable="true"
+        android:layout_marginLeft="6dp"
+        android:layout_marginBottom="7dp"
+        card_view:cardBackgroundColor="#EDBFF4"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        card_view:cardCornerRadius="15dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="6dp"
+            android:orientation="horizontal">
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="70dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/ic_baseline_person_24"
+                android:id="@+id/soruCevaplaButon"
+                android:layout_height="70dp">
+
+            </de.hdodenhof.circleimageview.CircleImageView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:textStyle="bold"
+                    android:id="@+id/kullanici_Nametext"
+                    android:textSize="20dp">
+
+                </TextView>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginRight="35dp"
+                    android:backgroundTint="#6a0080"
+                    android:text="PETS"
+                    android:id="@+id/kullaniciPetlerButon"
+                    android:layout_weight="3">
+
+                </Button>
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:background="@drawable/ic_baseline_perm_phone_msg_24"
+        android:layout_marginRight="30dp"
+        android:id="@+id/kullaniciAraButon"
+        android:layout_weight="1.2">
+
+    </ImageView>
+
+</LinearLayout>
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+
+
+    </androidx.cardview.widget.CardView>
+
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>

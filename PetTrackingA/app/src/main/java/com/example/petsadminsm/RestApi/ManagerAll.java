@@ -7,6 +7,7 @@ import com.example.petsadminsm.Models.CevaplaModel;
 import com.example.petsadminsm.Models.KampanyaEkleModel;
 import com.example.petsadminsm.Models.KampanyaModel;
 import com.example.petsadminsm.Models.KampanyaSilModel;
+import com.example.petsadminsm.Models.KullanicilarModel;
 import com.example.petsadminsm.Models.PetAsiTakipModel;
 import com.example.petsadminsm.Models.SorularModel;
 
@@ -70,6 +71,12 @@ public class ManagerAll extends BaseManager {
     public Call<CevaplaModel> soruCevapla(String musid,String soruid,String text)
     {
         Call<CevaplaModel> x=getRestApi().soruCevapla(musid, soruid, text);
+        return x;
+    }
+
+    public Call<List<KullanicilarModel>> getKullanicilar()
+    {
+        Call<List<KullanicilarModel>> x=getRestApi().getKullanicilar();
         return x;
     }
 }

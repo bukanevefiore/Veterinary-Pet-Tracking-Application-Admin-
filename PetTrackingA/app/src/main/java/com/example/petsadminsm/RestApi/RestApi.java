@@ -6,6 +6,7 @@ import com.example.petsadminsm.Models.CevaplaModel;
 import com.example.petsadminsm.Models.KampanyaEkleModel;
 import com.example.petsadminsm.Models.KampanyaModel;
 import com.example.petsadminsm.Models.KampanyaSilModel;
+import com.example.petsadminsm.Models.KullanicilarModel;
 import com.example.petsadminsm.Models.PetAsiTakipModel;
 import com.example.petsadminsm.Models.SorularModel;
 
@@ -49,4 +50,7 @@ public interface RestApi {
     @FormUrlEncoded
     @POST("/veterinary/adminsorucevapla.php")
     Call<CevaplaModel> soruCevapla(@Field("musid") String musid,@Field("soruid") String soruid,@Field("text") String text);
+
+    @GET("/veterinary/adminkullanicilar.php")
+    Call<List<KullanicilarModel>> getKullanicilar();
 }
