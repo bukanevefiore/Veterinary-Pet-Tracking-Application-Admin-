@@ -2,6 +2,7 @@ package com.example.petsadminsm.RestApi;
 
 
 
+import com.example.petsadminsm.Models.AsiEkleModel;
 import com.example.petsadminsm.Models.AsiOnaylaModel;
 import com.example.petsadminsm.Models.CevaplaModel;
 import com.example.petsadminsm.Models.KampanyaEkleModel;
@@ -91,6 +92,13 @@ public class ManagerAll extends BaseManager {
     public Call<PetEkleModel> petEkle(String musid, String petisim, String pettur,String petcins,String petresim)
     {
         Call<PetEkleModel> x=getRestApi().petEkle(musid, petisim, pettur,petcins,petresim);
+        return x;
+    }
+
+
+    public Call<AsiEkleModel> asiEkle(String musid, String petid, String asiisim, String asitarih)
+    {
+        Call<AsiEkleModel> x=getRestApi().asiEkle(musid,petid,asiisim,asitarih);
         return x;
     }
 

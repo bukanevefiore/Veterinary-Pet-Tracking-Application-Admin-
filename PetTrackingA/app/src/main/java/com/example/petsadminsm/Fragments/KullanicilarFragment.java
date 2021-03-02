@@ -10,12 +10,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.petsadminsm.Adapters.UsersAdapter;
 import com.example.petsadminsm.Models.KullanicilarModel;
 import com.example.petsadminsm.R;
 import com.example.petsadminsm.RestApi.ManagerAll;
+import com.example.petsadminsm.Utils.ChangeFragments;
 import com.example.petsadminsm.Utils.Warnings;
 
 import java.util.ArrayList;
@@ -32,6 +34,8 @@ public class KullanicilarFragment extends Fragment {
     private RecyclerView kullanicilar_recyclerview;
     private List<KullanicilarModel> list;
     private UsersAdapter usersAdapter;
+    private ImageView kul_backImage;
+    ChangeFragments changeFragments;
 
 
     @Override
@@ -52,6 +56,17 @@ public class KullanicilarFragment extends Fragment {
         RecyclerView.LayoutManager mng=new GridLayoutManager(getContext(),1);
         kullanicilar_recyclerview.setLayoutManager(mng);
         list=new ArrayList<>();
+        changeFragments=new ChangeFragments(getContext());
+        kul_backImage=view.findViewById(R.id.kul_backImage);
+
+        // geri gelme
+        kul_backImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                changeFragments.change(new HomeFragment());
+            }
+        });
     }
 
     public void getKullanicilarRequest(){

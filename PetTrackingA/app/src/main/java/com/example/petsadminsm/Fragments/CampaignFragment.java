@@ -48,7 +48,7 @@ public class CampaignFragment extends Fragment {
     private CampaignAdapter campaignAdapter;
     private FloatingActionButton yeniKampanyaEkleButon;
     private ChangeFragments changeFragments;
-    private ImageView kampanyaImage;
+    private ImageView kampanyaImage,kampanya_backImage;
     private Bitmap bitmap;  // galeriden resmi almak için
     private String imageString;
 
@@ -74,6 +74,8 @@ public class CampaignFragment extends Fragment {
         yeniKampanyaEkleButon = view.findViewById(R.id.yeniKampanyaEkleButon);
         bitmap=null;
         imageString="";
+        changeFragments=new ChangeFragments(getContext());
+        kampanya_backImage=view.findViewById(R.id.kampanya_backImage);
     }
 
     public void action() {
@@ -85,6 +87,15 @@ public class CampaignFragment extends Fragment {
                 // alert dialog açılacak
                 openKampanyaAlert();
 
+            }
+        });
+
+        // geri gelme
+        kampanya_backImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                changeFragments.change(new HomeFragment());
             }
         });
     }

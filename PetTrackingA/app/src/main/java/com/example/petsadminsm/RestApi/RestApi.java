@@ -1,6 +1,7 @@
 package com.example.petsadminsm.RestApi;
 
 
+import com.example.petsadminsm.Models.AsiEkleModel;
 import com.example.petsadminsm.Models.AsiOnaylaModel;
 import com.example.petsadminsm.Models.CevaplaModel;
 import com.example.petsadminsm.Models.KampanyaEkleModel;
@@ -64,4 +65,9 @@ public interface RestApi {
     @POST("/veterinary/adminpetekle.php")
     Call<PetEkleModel> petEkle(@Field("musid") String musid, @Field("petisim") String petisim, @Field("pettur") String pettur
             , @Field("petcins") String petcins, @Field("petresim") String petresim);
+
+    @FormUrlEncoded
+    @POST("/veterinary/adminasiekle.php")
+    Call<AsiEkleModel> asiEkle(@Field("musid") String musid, @Field("petidi") String petidi, @Field("asiisim") String asiisim
+            , @Field("asitarih") String asitarih);
 }

@@ -1,31 +1,42 @@
 package com.example.petsadminsm.Adapters;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.petsadminsm.Fragments.KullaniciPetFragment;
+import com.example.petsadminsm.Models.AsiEkleModel;
 import com.example.petsadminsm.Models.KullanicilarModel;
 import com.example.petsadminsm.Models.PetModel;
 import com.example.petsadminsm.R;
+import com.example.petsadminsm.RestApi.ManagerAll;
 import com.example.petsadminsm.Utils.ChangeFragments;
+import com.example.petsadminsm.Utils.Warnings;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.gson.internal.$Gson$Preconditions;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class PetsAdapter extends RecyclerView.Adapter<PetsAdapter.ViewHolder>{
 
@@ -34,6 +45,7 @@ public class PetsAdapter extends RecyclerView.Adapter<PetsAdapter.ViewHolder>{
     private Activity activity;
     ChangeFragments changeFragments;
     private String musid;
+    private String tarih="";
 
 
     public PetsAdapter(List<PetModel> list, Context context, Activity activity,String musid) {
@@ -67,7 +79,7 @@ public class PetsAdapter extends RecyclerView.Adapter<PetsAdapter.ViewHolder>{
             @Override
             public void onClick(View v) {
 
-
+                openAsiEkleAlert(list.get(position).getPetid().toString());
             }
         });
 
@@ -109,18 +121,19 @@ public class PetsAdapter extends RecyclerView.Adapter<PetsAdapter.ViewHolder>{
 
     }
 
-/*
-    // yeni kampanya eklemek için alert diyalog açma
-    public void openKampanyaSilAlert(final int position) {
+    // yeni aşı eklemek için alert diyalog açma
+    public void openAsiEkleAlert(String petid) {
 
         LayoutInflater layoutInflater = activity.getLayoutInflater();
-        View view = layoutInflater.inflate(R.layout.kampanya_sil_layout, null);
+        View view = layoutInflater.inflate(R.layout.asi_ekle_alert_layout, null);
 
-        final Button kampanyaSilButon,alertKapatButon;
+        final TextInputEditText asiname_ekle;
+        final Button asiEkleKaydetButon;
+        final CalendarView asi_tarih;
 
-        kampanyaSilButon=view.findViewById(R.id.kampanyaSilButon);
-        alertKapatButon=view.findViewById(R.id.alertKapatButon);
-
+        asiname_ekle = view.findViewById(R.id.asiname_ekle);
+        asiEkleKaydetButon = view.findViewById(R.id.asiEkleKaydetButon);
+        asi_tarih = view.findViewById(R.id.asi_tarih);
 
 
         AlertDialog.Builder alert = new AlertDialog.Builder(context);
@@ -128,39 +141,70 @@ public class PetsAdapter extends RecyclerView.Adapter<PetsAdapter.ViewHolder>{
         alert.setCancelable(true);
         final AlertDialog alertDialog = alert.create();
 
-        // kampanya silme işlemi
-        kampanyaSilButon.setOnClickListener(new View.OnClickListener() {
+        // aşıya calendar view de tarih işaretleme
+        asi_tarih.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
-            public void onClick(View v) {
+            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
 
-                kampanyaSilRequest(list.get(position).getId().toString(),position);
-                alertDialog.cancel();
+
+                tarih=dayOfMonth+"/"+(month+1)+"/"+year;
+                Toast.makeText(context, tarih, Toast.LENGTH_LONG).show();
             }
         });
 
-        // silmeyi iptal etme
-        alertKapatButon.setOnClickListener(new View.OnClickListener() {
+        // aşıyı kaydetme
+        asiEkleKaydetButon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                alertDialog.cancel();
+                if (asiname_ekle.getText().toString() != "" && tarih != "")
+
+                {
+
+                    // asi ekleme methodunu çağırma
+                    asiEkleRequest(musid, petid,asiname_ekle.getText().toString(),tarih,alertDialog);
+                    // edittextleri boşaltma
+                    asiname_ekle.setText("");
+
+
+
+                }else{
+                    Toast.makeText(context, "Fill in all fields!", Toast.LENGTH_LONG).show();
+                }
+
 
             }
         });
-
 
         alertDialog.show();
     }
 
+    public void asiEkleRequest(String musid,String petid,String asiisim,String asitarih,final AlertDialog alertDialog){
 
-    // burdaki listten de kampanyayı silmek için
-    public void deleteToKampanyaList(int position){
+        Call<AsiEkleModel> request= ManagerAll.getInstance().asiEkle(musid, petid, asiisim, asitarih);
+        request.enqueue(new Callback<AsiEkleModel>() {
+            @Override
+            public void onResponse(Call<AsiEkleModel> call, Response<AsiEkleModel> response) {
 
-        list.remove(position);
-        notifyItemRemoved(position);
-        notifyDataSetChanged();
+                if(response.body().isTf()){
 
+                    Toast.makeText(context, response.body().getText().toString(), Toast.LENGTH_SHORT).show();
+                    alertDialog.cancel();
+                }else{
+
+                    Toast.makeText(context, response.body().getText().toString(), Toast.LENGTH_SHORT).show();
+                    alertDialog.cancel();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AsiEkleModel> call, Throwable t) {
+
+                Toast.makeText(context, Warnings.internetProblemText, Toast.LENGTH_SHORT).show();
+                Log.e("asieklekontrol",t.getMessage());
+
+            }
+        });
     }
-*/
 
 }

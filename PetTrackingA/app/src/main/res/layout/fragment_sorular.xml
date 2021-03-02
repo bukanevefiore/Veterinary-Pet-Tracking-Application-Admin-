@@ -8,18 +8,33 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragments.SorularFragment">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:text="CURRENT OFFERS"
-        card_view:cornerRadius="20dp"
         android:background="#b4004e"
-        android:gravity="center"
-        android:textColor="#F3F0EF">
+        android:id="@+id/toolbar"
+        android:layout_alignParentTop="true"
+        android:layout_height="40dp">
 
-    </TextView>
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/soru_backImage"
+            android:background="@drawable/ic_baseline_arrow_back_24">
+
+        </ImageView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="CUSTOMER QUESTIONS"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="20dp"
+            android:textColor="#E3E3E3">
+
+        </TextView>
+
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"

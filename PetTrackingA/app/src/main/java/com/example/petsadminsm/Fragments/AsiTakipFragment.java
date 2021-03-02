@@ -1,5 +1,6 @@
 package com.example.petsadminsm.Fragments;
 
+import android.accessibilityservice.AccessibilityService;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,12 +11,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.petsadminsm.Adapters.PetAsiTakipAdapter;
 import com.example.petsadminsm.Models.PetAsiTakipModel;
 import com.example.petsadminsm.R;
 import com.example.petsadminsm.RestApi.ManagerAll;
+import com.example.petsadminsm.Utils.ChangeFragments;
 import com.example.petsadminsm.Utils.Warnings;
 
 import java.text.DateFormat;
@@ -39,6 +43,8 @@ public class AsiTakipFragment extends Fragment {
     private RecyclerView asiTakip_recyclerview;
     private List<PetAsiTakipModel> takipList;
     private PetAsiTakipAdapter petAsiTakipAdapter;
+    private ImageView asitakip_backImage;
+    private ChangeFragments changeFragments;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -63,6 +69,16 @@ public class AsiTakipFragment extends Fragment {
         RecyclerView.LayoutManager mng=new GridLayoutManager(getContext(),1);
         asiTakip_recyclerview.setLayoutManager(mng);
         takipList=new ArrayList<>();
+        asitakip_backImage=view.findViewById(R.id.asitakip_backImage);
+        changeFragments=new ChangeFragments(getContext());
+
+        asitakip_backImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                changeFragments.change(new HomeFragment());
+            }
+        });
 
     }
 

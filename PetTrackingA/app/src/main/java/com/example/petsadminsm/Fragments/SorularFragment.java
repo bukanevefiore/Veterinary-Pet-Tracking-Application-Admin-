@@ -10,12 +10,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.petsadminsm.Adapters.SorularAdapter;
 import com.example.petsadminsm.Models.SorularModel;
 import com.example.petsadminsm.R;
 import com.example.petsadminsm.RestApi.ManagerAll;
+import com.example.petsadminsm.Utils.ChangeFragments;
 import com.example.petsadminsm.Utils.Warnings;
 
 import java.util.ArrayList;
@@ -32,6 +34,8 @@ public class SorularFragment extends Fragment {
     private RecyclerView sorular_recyclerview;
     List<SorularModel> sorularList;
     private SorularAdapter sorularAdapter;
+    private ImageView soru_backImage;
+    private ChangeFragments changeFragments;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,6 +55,15 @@ public class SorularFragment extends Fragment {
         RecyclerView.LayoutManager mng=new GridLayoutManager(getContext(),1);
         sorular_recyclerview.setLayoutManager(mng);
         sorularList=new ArrayList<>();
+        changeFragments=new ChangeFragments(getContext());
+        soru_backImage=view.findViewById(R.id.soru_backImage);
+        soru_backImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                changeFragments.change(new HomeFragment());
+            }
+        });
     }
 
     public void getSorularRequest(){

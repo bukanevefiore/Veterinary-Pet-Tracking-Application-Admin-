@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.petsadminsm.Adapters.PetsAdapter;
@@ -26,6 +27,7 @@ import com.example.petsadminsm.Models.PetEkleModel;
 import com.example.petsadminsm.Models.PetModel;
 import com.example.petsadminsm.R;
 import com.example.petsadminsm.RestApi.ManagerAll;
+import com.example.petsadminsm.Utils.ChangeFragments;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -50,6 +52,8 @@ public class KullaniciPetFragment extends Fragment {
     private ImageView petresim_ekle;
     private Bitmap bitmap;
     private String imageString;
+    private ImageView pets_backImage;
+    ChangeFragments changeFragments;
 
 
     @Override
@@ -74,6 +78,9 @@ public class KullaniciPetFragment extends Fragment {
         list=new ArrayList<>();
         bitmap=null;
         petEkleButon=view.findViewById(R.id.petEkleButon);
+        changeFragments=new ChangeFragments(getContext());
+        pets_backImage=view.findViewById(R.id.pets_backImage);
+
 
         // pet ekleme alertini açmak için butona click özelliği
         petEkleButon.setOnClickListener(new View.OnClickListener() {
@@ -83,6 +90,15 @@ public class KullaniciPetFragment extends Fragment {
                 // butona tıklanınca alertimizi açıyoruz
                 openPetEkleAlert();
 
+            }
+        });
+
+        // geri gelme
+        pets_backImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                changeFragments.change(new KullanicilarFragment());
             }
         });
 
