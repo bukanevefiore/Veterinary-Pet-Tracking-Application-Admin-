@@ -9,6 +9,7 @@ import com.example.petsadminsm.Models.KampanyaModel;
 import com.example.petsadminsm.Models.KampanyaSilModel;
 import com.example.petsadminsm.Models.KullanicilarModel;
 import com.example.petsadminsm.Models.PetAsiTakipModel;
+import com.example.petsadminsm.Models.PetEkleModel;
 import com.example.petsadminsm.Models.PetModel;
 import com.example.petsadminsm.Models.SorularModel;
 
@@ -86,5 +87,12 @@ public class ManagerAll extends BaseManager {
         Call<List<PetModel>> x=getRestApi().getPets(musid);
         return x;
     }
+
+    public Call<PetEkleModel> petEkle(String musid, String petisim, String pettur,String petcins,String petresim)
+    {
+        Call<PetEkleModel> x=getRestApi().petEkle(musid, petisim, pettur,petcins,petresim);
+        return x;
+    }
+
 
 }

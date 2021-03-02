@@ -8,6 +8,7 @@ import com.example.petsadminsm.Models.KampanyaModel;
 import com.example.petsadminsm.Models.KampanyaSilModel;
 import com.example.petsadminsm.Models.KullanicilarModel;
 import com.example.petsadminsm.Models.PetAsiTakipModel;
+import com.example.petsadminsm.Models.PetEkleModel;
 import com.example.petsadminsm.Models.PetModel;
 import com.example.petsadminsm.Models.SorularModel;
 
@@ -58,4 +59,9 @@ public interface RestApi {
     @FormUrlEncoded
     @POST("/veterinary/petlerim.php")
     Call<List<PetModel>> getPets(@Field("musid") String musid);
+
+    @FormUrlEncoded
+    @POST("/veterinary/adminpetekle.php")
+    Call<PetEkleModel> petEkle(@Field("musid") String musid, @Field("petisim") String petisim, @Field("pettur") String pettur
+            , @Field("petcins") String petcins, @Field("petresim") String petresim);
 }

@@ -18,7 +18,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -126,7 +125,7 @@ public class CampaignFragment extends Fragment {
     public void openKampanyaAlert() {
 
         LayoutInflater layoutInflater = this.getLayoutInflater();
-        View view = layoutInflater.inflate(R.layout.kampanya_ekle_layout, null);
+        View view = layoutInflater.inflate(R.layout.kampanya_ekle_alert_layout, null);
 
         final TextInputEditText kampanyabaslik, kampanyaicerik;
 
@@ -165,7 +164,7 @@ public class CampaignFragment extends Fragment {
                 {
 
                     // kampanya ekleme methodunu çağırma
-                    kampanyaEkle(kampanyabaslik.getText().toString(),kampanyaicerik.getText().toString(),imageToString(),
+                    kampanyaEkleRequest(kampanyabaslik.getText().toString(),kampanyaicerik.getText().toString(),imageToString(),
                             alertDialog);
                     // edittextleri boşaltma
                     kampanyabaslik.setText("");
@@ -191,6 +190,7 @@ public class CampaignFragment extends Fragment {
         startActivityForResult(intent, 777);
     }
 
+    // imageview set etme
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -226,7 +226,7 @@ public class CampaignFragment extends Fragment {
         }
     }
 
-    public void kampanyaEkle(String baslik,String icerik,String resim,AlertDialog alertDialog){
+    public void kampanyaEkleRequest(String baslik,String icerik,String resim,AlertDialog alertDialog){
 
         Call<KampanyaEkleModel> request=ManagerAll.getInstance().addKampanya(baslik, icerik, resim);
         request.enqueue(new Callback<KampanyaEkleModel>() {

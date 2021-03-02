@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="40dp"
-    android:background="#AAD578"
+    android:background="#5D882A"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
@@ -97,7 +97,7 @@
         <com.google.android.material.button.MaterialButton
             android:layout_width="100dp"
             android:text="ADD PICTURE"
-            card_view:cornerRadius="20dp"
+            card_view:cornerRadius="10dp"
             android:textSize="10dp"
             android:backgroundTint="#416715"
             android:layout_gravity="center"
@@ -111,7 +111,7 @@
         android:layout_width="100dp"
         android:text="SAVE"
         android:textSize="12dp"
-        card_view:cornerRadius="20dp"
+        card_view:cornerRadius="10dp"
         android:backgroundTint="#416715"
         android:layout_gravity="center"
         android:layout_margin="20dp"
