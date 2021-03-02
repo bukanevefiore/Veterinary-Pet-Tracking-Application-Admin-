@@ -4,9 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:layout_marginTop="20dp"
     android:layout_height="match_parent"
     tools:context=".Fragments.HomeFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:text="MENUS"
+        android:background="#000"
+        android:gravity="center"
+        android:textColor="#F3F0EF">
+
+    </TextView>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -15,6 +26,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:orientation="vertical">
 
 
@@ -139,7 +151,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="USERS"
+                                android:text="OWNERS"
                                 android:textSize="15dp"
                                 android:textAlignment="center"
                                 android:background="#6a0080"
@@ -212,7 +224,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="ADD CAMPAIGN"
+                                android:text="CAMPAIGNS"
                                 android:textSize="15dp"
                                 android:textAlignment="center"
                                 android:background="#4A7E0D"

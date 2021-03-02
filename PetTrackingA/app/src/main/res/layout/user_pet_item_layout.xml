@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        card_view:cardElevation="5dp"
+        android:textAlignment="center"
+        android:clickable="true"
+        android:layout_margin="10dp"
+        card_view:cardBackgroundColor="#6a0080"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardCornerRadius="10dp">
+
+        <androidx.cardview.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            card_view:cardElevation="5dp"
+            android:textAlignment="center"
+            android:clickable="true"
+            android:id="@+id/pet_asi_ekleme_cardView"
+            android:layout_marginLeft="4dp"
+            android:layout_marginBottom="6dp"
+            card_view:cardBackgroundColor="#EDBFF4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            card_view:cardCornerRadius="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="6dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:textStyle="bold"
+                    android:id="@+id/pet_Nametext"
+                    android:textSize="20dp">
+
+                </TextView>
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="70dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_baseline_person_24"
+                    android:id="@+id/kullanici_petImage"
+                    android:layout_height="70dp">
+
+                </de.hdodenhof.circleimageview.CircleImageView>
+
+
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:id="@+id/petBilgi_Bilgitext"
+                        android:textSize="12dp">
+
+                    </TextView>
+
+
+
+
+
+
+            </LinearLayout>
+
+
+
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

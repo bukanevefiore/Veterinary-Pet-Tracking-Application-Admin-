@@ -32,7 +32,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginRight="10dp"
-        android:backgroundTint="#F7F8F6"
+        android:backgroundTint="#4A7E0D"
         android:id="@+id/yeniKampanyaEkleButon"
         android:src="@drawable/ic_baseline_notification_add_24"
         android:layout_marginTop="-60dp"

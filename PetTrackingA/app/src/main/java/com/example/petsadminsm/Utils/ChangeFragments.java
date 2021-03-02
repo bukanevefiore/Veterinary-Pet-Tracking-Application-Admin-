@@ -29,10 +29,10 @@ public class ChangeFragments {
 
     }
 
-    public void changeWithParemeters(Fragment fragment,String petId){
+    public void changeWithParemeters(Fragment fragment,String userid){
 
         Bundle bundle=new Bundle();
-        bundle.putString("petid",petId);
+        bundle.putString("userid",userid);
         fragment.setArguments(bundle);
 
         ((FragmentActivity)context).getSupportFragmentManager().beginTransaction()
