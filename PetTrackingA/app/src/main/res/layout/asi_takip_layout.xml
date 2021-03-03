@@ -13,19 +13,19 @@
         card_view:cardBackgroundColor="#8E4529"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        card_view:cardCornerRadius="25dp">
+        card_view:cardCornerRadius="15dp">
 
         <androidx.cardview.widget.CardView
             card_view:cardElevation="5dp"
             android:textAlignment="center"
             android:id="@+id/kampanyaLayoutSil"
             android:clickable="true"
-            android:layout_marginBottom="12dp"
-            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="7dp"
+            android:layout_marginLeft="5dp"
             card_view:cardBackgroundColor="#DDCEC8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            card_view:cardCornerRadius="25dp">
+            card_view:cardCornerRadius="15dp">
 
 
 

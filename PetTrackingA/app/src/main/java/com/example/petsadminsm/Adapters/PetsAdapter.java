@@ -21,8 +21,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.petsadminsm.Fragments.KullaniciPetFragment;
 import com.example.petsadminsm.Models.AsiEkleModel;
+import com.example.petsadminsm.Models.KullaniciSilModel;
 import com.example.petsadminsm.Models.KullanicilarModel;
 import com.example.petsadminsm.Models.PetModel;
+import com.example.petsadminsm.Models.PetSilModel;
 import com.example.petsadminsm.R;
 import com.example.petsadminsm.RestApi.ManagerAll;
 import com.example.petsadminsm.Utils.ChangeFragments;
@@ -31,7 +33,12 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.gson.internal.$Gson$Preconditions;
 import com.squareup.picasso.Picasso;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
@@ -83,6 +90,14 @@ public class PetsAdapter extends RecyclerView.Adapter<PetsAdapter.ViewHolder>{
             }
         });
 
+        holder.silAlertAcButon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+               openPetSilAlert(position);
+            }
+        });
+
     }
 
 
@@ -95,10 +110,10 @@ public class PetsAdapter extends RecyclerView.Adapter<PetsAdapter.ViewHolder>{
     // view elemanlarını tanımlamak için bir iner class oluştuuryoruz
     public class ViewHolder extends RecyclerView.ViewHolder
     {
-        TextView pet_Nametext,petBilgi_Bilgitext;
-        CircleImageView kullanici_petImage;
-        private CardView pet_asi_ekleme_cardView;
-
+        final TextView pet_Nametext,petBilgi_Bilgitext;
+        final CircleImageView kullanici_petImage;
+        final CardView pet_asi_ekleme_cardView;
+        final ImageView silAlertAcButon;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -108,6 +123,7 @@ public class PetsAdapter extends RecyclerView.Adapter<PetsAdapter.ViewHolder>{
             petBilgi_Bilgitext=itemView.findViewById(R.id.petBilgi_Bilgitext);
             kullanici_petImage=itemView.findViewById(R.id.kullanici_petImage);
             pet_asi_ekleme_cardView=itemView.findViewById(R.id.pet_asi_ekleme_cardView);
+            silAlertAcButon=itemView.findViewById(R.id.silAlertAcButon);
 
         }
     }
@@ -146,8 +162,16 @@ public class PetsAdapter extends RecyclerView.Adapter<PetsAdapter.ViewHolder>{
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
 
-
+                DateFormat inputFormat = new SimpleDateFormat("dd/MM/yyyy");
+                DateFormat format=new SimpleDateFormat("dd/MM/yyyy");
                 tarih=dayOfMonth+"/"+(month+1)+"/"+year;
+                try {
+                    Date date=inputFormat.parse(tarih);
+                    tarih=format.format(date);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
                 Toast.makeText(context, tarih, Toast.LENGTH_LONG).show();
             }
         });
@@ -205,6 +229,85 @@ public class PetsAdapter extends RecyclerView.Adapter<PetsAdapter.ViewHolder>{
 
             }
         });
+    }
+
+    //  pet silmek için alert diyalog açma
+    public void openPetSilAlert(final int position) {
+
+        LayoutInflater layoutInflater = activity.getLayoutInflater();
+        View view = layoutInflater.inflate(R.layout.pet_sil_layout, null);
+
+        final Button petSilButon,alertPetKapatButon;
+
+
+        petSilButon=view.findViewById(R.id.petSilButon);
+        alertPetKapatButon=view.findViewById(R.id.alertPetKapatButon);
+
+
+
+        AlertDialog.Builder alert = new AlertDialog.Builder(context);
+        alert.setView(view);
+        alert.setCancelable(true);
+        final AlertDialog alertDialog = alert.create();
+
+        // kampanya silme işlemi
+        petSilButon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                petSilRequest(list.get(position).getPetid().toString(),position);
+                alertDialog.cancel();
+            }
+        });
+
+        // silmeyi iptal etme
+        alertPetKapatButon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                alertDialog.cancel();
+
+            }
+        });
+
+
+        alertDialog.show();
+    }
+
+    public void petSilRequest(String id,int position){
+
+        Call<PetSilModel> request= ManagerAll.getInstance().petSil(id);
+        request.enqueue(new Callback<PetSilModel>() {
+            @Override
+            public void onResponse(Call<PetSilModel> call, Response<PetSilModel> response) {
+
+                if(response.body().isTf()){
+                    Toast.makeText(context, response.body().getText(), Toast.LENGTH_SHORT).show();
+                    deleteToKullaniciList(position);
+                }else{
+
+                    Toast.makeText(context, response.body().getText(), Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<PetSilModel> call, Throwable t) {
+
+                Toast.makeText(context, Warnings.internetProblemText, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+    }
+
+    // burdaki listten de kampanyayı silmek için
+    public void deleteToKullaniciList(int position){
+
+        list.remove(position);
+        notifyItemRemoved(position);
+        notifyDataSetChanged();
+
     }
 
 }

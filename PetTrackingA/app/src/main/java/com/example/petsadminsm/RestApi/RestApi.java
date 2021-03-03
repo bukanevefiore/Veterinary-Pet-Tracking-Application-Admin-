@@ -7,10 +7,12 @@ import com.example.petsadminsm.Models.CevaplaModel;
 import com.example.petsadminsm.Models.KampanyaEkleModel;
 import com.example.petsadminsm.Models.KampanyaModel;
 import com.example.petsadminsm.Models.KampanyaSilModel;
+import com.example.petsadminsm.Models.KullaniciSilModel;
 import com.example.petsadminsm.Models.KullanicilarModel;
 import com.example.petsadminsm.Models.PetAsiTakipModel;
 import com.example.petsadminsm.Models.PetEkleModel;
 import com.example.petsadminsm.Models.PetModel;
+import com.example.petsadminsm.Models.PetSilModel;
 import com.example.petsadminsm.Models.SorularModel;
 
 import java.util.List;
@@ -70,4 +72,12 @@ public interface RestApi {
     @POST("/veterinary/adminasiekle.php")
     Call<AsiEkleModel> asiEkle(@Field("musid") String musid, @Field("petidi") String petidi, @Field("asiisim") String asiisim
             , @Field("asitarih") String asitarih);
+
+    @FormUrlEncoded
+    @POST("/veterinary/adminkullanicisil.php")
+    Call<KullaniciSilModel> kullaniciSil(@Field("id") String id);
+
+    @FormUrlEncoded
+    @POST("/veterinary/adminpetsil.php")
+    Call<PetSilModel> petSil(@Field("id") String id);
 }

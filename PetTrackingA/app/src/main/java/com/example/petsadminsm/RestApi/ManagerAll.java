@@ -8,10 +8,12 @@ import com.example.petsadminsm.Models.CevaplaModel;
 import com.example.petsadminsm.Models.KampanyaEkleModel;
 import com.example.petsadminsm.Models.KampanyaModel;
 import com.example.petsadminsm.Models.KampanyaSilModel;
+import com.example.petsadminsm.Models.KullaniciSilModel;
 import com.example.petsadminsm.Models.KullanicilarModel;
 import com.example.petsadminsm.Models.PetAsiTakipModel;
 import com.example.petsadminsm.Models.PetEkleModel;
 import com.example.petsadminsm.Models.PetModel;
+import com.example.petsadminsm.Models.PetSilModel;
 import com.example.petsadminsm.Models.SorularModel;
 
 import java.util.List;
@@ -102,5 +104,17 @@ public class ManagerAll extends BaseManager {
         return x;
     }
 
+
+    public Call<KullaniciSilModel> kullaniciSil(String id)
+    {
+        Call<KullaniciSilModel> x=getRestApi().kullaniciSil(id);
+        return x;
+    }
+
+    public Call<PetSilModel> petSil(String id)
+    {
+        Call<PetSilModel> x=getRestApi().petSil(id);
+        return x;
+    }
 
 }

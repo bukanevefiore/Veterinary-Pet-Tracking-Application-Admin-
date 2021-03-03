@@ -98,7 +98,7 @@ public class CampaignAdapter extends RecyclerView.Adapter<CampaignAdapter.ViewHo
     }
 
 
-    // yeni kampanya eklemek için alert diyalog açma
+    // kampanya silmek için alert diyalog açma
     public void openKampanyaSilAlert(final int position) {
 
         LayoutInflater layoutInflater = activity.getLayoutInflater();

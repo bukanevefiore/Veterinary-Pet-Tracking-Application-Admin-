@@ -34,8 +34,14 @@
                 android:layout_margin="6dp"
                 android:orientation="vertical">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="5"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:textStyle="bold"
@@ -45,6 +51,17 @@
 
                 </TextView>
 
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="30dp"
+                        android:layout_gravity="right"
+                        android:id="@+id/silAlertAcButon"
+                        android:background="@drawable/ic_baseline_delete_forever_24">
+
+                    </ImageView>
+
+                </LinearLayout>
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="70dp"
                     android:layout_gravity="center"

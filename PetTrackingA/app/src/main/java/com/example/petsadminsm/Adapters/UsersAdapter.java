@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.petsadminsm.Fragments.KullaniciPetFragment;
 import com.example.petsadminsm.Models.KampanyaModel;
 import com.example.petsadminsm.Models.KampanyaSilModel;
+import com.example.petsadminsm.Models.KullaniciSilModel;
 import com.example.petsadminsm.Models.KullanicilarModel;
 import com.example.petsadminsm.R;
 import com.example.petsadminsm.RestApi.ManagerAll;
@@ -82,6 +83,14 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder>{
                 ara(list.get(position).getTelefon().toString());
             }
         });
+        // kullanıcı silme işlemi
+        holder.kullanicilarLayoutSil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                openKullaniciSilAlert(position);
+            }
+        });
        
     }
 
@@ -98,6 +107,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder>{
         TextView kullanici_Nametext;
         ImageView kullaniciAraButon;
         Button kullaniciPetlerButon;
+        CardView kullanicilarLayoutSil;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -106,6 +116,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder>{
             kullanici_Nametext=itemView.findViewById(R.id.kullanici_Nametext);
             kullaniciPetlerButon=itemView.findViewById(R.id.kullaniciPetlerButon);
             kullaniciAraButon=itemView.findViewById(R.id.kullaniciAraButon);
+            kullanicilarLayoutSil=itemView.findViewById(R.id.kullanicilarLayoutSil);
 
 
         }
@@ -117,6 +128,85 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder>{
         Intent intent=new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse("tel:"+numara));
         activity.startActivity(intent);
+
+    }
+
+
+    //  user silmek için alert diyalog açma
+    public void openKullaniciSilAlert(final int position) {
+
+        LayoutInflater layoutInflater = activity.getLayoutInflater();
+        View view = layoutInflater.inflate(R.layout.kullanici_sil_layout, null);
+
+        final Button kullaniciSilButon,alertKullaniciKapatButon;
+
+        kullaniciSilButon=view.findViewById(R.id.kullaniciSilButon);
+        alertKullaniciKapatButon=view.findViewById(R.id.alertKullaniciKapatButon);
+
+
+
+        AlertDialog.Builder alert = new AlertDialog.Builder(context);
+        alert.setView(view);
+        alert.setCancelable(true);
+        final AlertDialog alertDialog = alert.create();
+
+        // kampanya silme işlemi
+        kullaniciSilButon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                kullaniciSilRequest(list.get(position).getId().toString(),position);
+                alertDialog.cancel();
+            }
+        });
+
+        // silmeyi iptal etme
+        alertKullaniciKapatButon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                alertDialog.cancel();
+
+            }
+        });
+
+
+        alertDialog.show();
+    }
+
+    public void kullaniciSilRequest(String id,int position){
+
+        Call<KullaniciSilModel> request= ManagerAll.getInstance().kullaniciSil(id);
+        request.enqueue(new Callback<KullaniciSilModel>() {
+            @Override
+            public void onResponse(Call<KullaniciSilModel> call, Response<KullaniciSilModel> response) {
+
+                if(response.body().isTf()){
+                    Toast.makeText(context, response.body().getText(), Toast.LENGTH_SHORT).show();
+                    deleteToKullaniciList(position);
+                }else{
+
+                    Toast.makeText(context, response.body().getText(), Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<KullaniciSilModel> call, Throwable t) {
+
+                Toast.makeText(context, Warnings.internetProblemText, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+    }
+
+    // burdaki listten de kampanyayı silmek için
+    public void deleteToKullaniciList(int position){
+
+        list.remove(position);
+        notifyItemRemoved(position);
+        notifyDataSetChanged();
 
     }
 
