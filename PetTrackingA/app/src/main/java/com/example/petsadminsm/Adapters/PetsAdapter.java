@@ -78,7 +78,7 @@ public class PetsAdapter extends RecyclerView.Adapter<PetsAdapter.ViewHolder>{
         holder.petBilgi_Bilgitext.setText("Type" +list.get(position).getPettur().toString()+" of this pet is breed " +list.get(position).getPetcins().toString()+
                 " Click on the pet to add the vaccine!");
 
-        Picasso.get().load("http://192.168.1.4/veterinary/"+list.get(position).getPetresim().toString()).resize(70,70)
+        Picasso.get().load("http://localhost/veterinary/"+list.get(position).getPetresim().toString()).resize(70,70)
                 .into(holder.kullanici_petImage);
 
         // pete yeni aşı ekleme

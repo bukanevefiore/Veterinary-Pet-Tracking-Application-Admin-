@@ -61,7 +61,7 @@ public class PetAsiTakipAdapter extends RecyclerView.Adapter<PetAsiTakipAdapter.
         holder.asiTakipPetNmae.setText(list.get(position).getPetisim().toString());
         holder.asiTakipBilgi.setText(list.get(position).getKadi().toString()+"'s pet with type " +list.get(position).getPettur().toString()+ " type " +list.get(position).getPetcins().toString()+
                 " has the " +list.get(position).getAsiisim().toString()+ " vaccine today.");
-        Picasso.get().load("http://192.168.1.4/veterinary/" +list.get(position).getPetresim()).resize(100,100).into(holder.asiTakipImage);
+        Picasso.get().load("http://localhost/veterinary/" +list.get(position).getPetresim()).resize(100,100).into(holder.asiTakipImage);
 /*
        if(list.get(position).getAsidurum().toString().equals("1")){
 

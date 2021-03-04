@@ -57,7 +57,7 @@ public class CampaignAdapter extends RecyclerView.Adapter<CampaignAdapter.ViewHo
 
         holder.kampanya_baslik.setText(list.get(position).getBaslik().toString());
         holder.kampanya_text.setText(list.get(position).getText().toString());
-        Picasso.get().load("http://192.168.1.4/veterinary/" +list.get(position).getResim()).resize(100,100).into(holder.kampanya_image);
+        Picasso.get().load("http://localhost/veterinary/" +list.get(position).getResim()).resize(100,100).into(holder.kampanya_image);
 
         holder.kampanyaLayoutSil.setOnClickListener(new View.OnClickListener() {
             @Override
