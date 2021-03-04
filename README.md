@@ -1,6 +1,6 @@
 Application preview
 https://user-images.githubusercontent.com/59068120/109841901-942fe600-7c5a-11eb-9750-b4a98fdb1231.mp4
-The pet tracking application I developed for the veterinarian from 2 different interactive applications of the user and the veterinarian that I developed within the scope of veterinary pet tracking.
+The pet tracking application I developed for the veterinarian from 2 different interactive applications of the user and the veterinarian that I developed within the scope of veterinary pet tracking
 
 
 # Veterinary-Pet-Tracking-Application-Admin-
